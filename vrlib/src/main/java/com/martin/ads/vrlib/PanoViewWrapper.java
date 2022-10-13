@@ -7,7 +7,6 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.opengl.GLSurfaceView;
 import android.os.Build;
-import android.os.Environment;
 import android.util.Log;
 import android.view.MotionEvent;
 
@@ -99,8 +98,10 @@ public class PanoViewWrapper {
         if(imageMode){
             if((mimeType & MimeType.ASSETS)!=0)
                 bitmap=BitmapUtils.loadBitmapFromAssets(context,filePath);
-            else if((mimeType & MimeType.BITMAP)!=0);
-
+            else if((mimeType & MimeType.BITMAP)!=0)
+                Log.w(TAG, "Loading image from BITMAP source not implemented yet.");
+            else if ((mimeType & MimeType.LOCAL_FILE) != 0)
+                bitmap = BitmapUtils.loadBitmapFromFile(context, uri.getPath());
             else if((mimeType & MimeType.RAW)!=0)
                 bitmap= BitmapUtils.loadBitmapFromRaw(context,
                         Integer.valueOf(uri.getLastPathSegment()));
