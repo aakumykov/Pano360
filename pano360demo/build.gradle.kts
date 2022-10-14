@@ -13,6 +13,7 @@ android {
 
 	buildFeatures {
 		compose = true
+		viewBinding = true
 	}
 	composeOptions {
 		kotlinCompilerExtensionVersion = libs.versions.jetpackCompose.get()
@@ -40,4 +41,9 @@ android {
 		implementation(projects.filepicker)
 		implementation(projects.vrlib)
 	}
+}
+dependencies {
+    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 }
